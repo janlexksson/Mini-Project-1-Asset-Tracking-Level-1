@@ -8,6 +8,9 @@ namespace Mini_Project_1_Asset_Tracking__Level_1
     {
         static void Main(string[] args)
         {
+            //This is first comment
+            //some more
+            // ad again
             //Console.WriteLine("Asset tracking");
             //List<AllAssets> allAssets = new List<AllAssets>();
 
