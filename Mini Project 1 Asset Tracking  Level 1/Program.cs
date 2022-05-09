@@ -9,8 +9,9 @@ namespace Mini_Project_1_Asset_Tracking__Level_1
         static void Main(string[] args)
         {
             //This is first comment
-            //some more
-            // ad again
+            //This is second comment and some deleted line
+
+
             //Console.WriteLine("Asset tracking");
             //List<AllAssets> allAssets = new List<AllAssets>();
 
@@ -23,7 +24,7 @@ namespace Mini_Project_1_Asset_Tracking__Level_1
             //    new Computers("Computer", "Asus", "W234", "USA", Convert.ToDateTime("2017-04-21"), 1200, "USD", 1200),
             //    new Computers("Computer", "Lenovo", "Yoga 730", "USA", Convert.ToDateTime("2018-05-28"), 835, "USD", 835),
             //    new Computers("Computer", "Lenovo", "Yoga 730", "USA", Convert.ToDateTime("2019-05-21"), 1030, "USD", 1030),
-               
+
             //    new Computers("Phone", "iPhone", "8", "Spain", Convert.ToDateTime("2018-12-29"), 970, "EUR", 801.65),
             //    new Computers("Phone", "iPhone", "11", "Spain", Convert.ToDateTime("2020-09-25"), 990, "EUR", 818.18),
             //    new Computers("Phone", "iPhone", "X", "Sweden", Convert.ToDateTime("2018-07-15"), 1245, "SEK", 10375),
