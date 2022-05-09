@@ -6,45 +6,25 @@ namespace Mini_Project_1_Asset_Tracking__Level_1
 {
     internal class Program
     {
+        static void Title(string input)
+        {
+            Console.WriteLine(input);
+            Console.WriteLine("---------------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("Type".PadRight(15) + "Brand".PadRight(15) + "Model".PadRight(15) + "Office".PadRight(15) + "Purchase Date".PadRight(15) + "Price in USD".PadRight(15) + "Currency".PadRight(15) + "Local price today");
+            Console.WriteLine("---------------------------------------------------------------------------------------------------------------------------");
+        }
+
+        static void PrintAssets(List<AllAssets> list)
+        {
+            foreach (AllAssets asset in list)
+            {
+                Console.WriteLine(asset.Type.PadRight(15) + asset.Brand.PadRight(15) + asset.Model.PadRight(15) + asset.Office.PadRight(15) + asset.PurchaseDate.ToString("yyyy-MM-dd").PadRight(15) + asset.PriceInUSD.ToString().PadRight(15) + asset.Currency.PadRight(15) + asset.LocalPriceToday.ToString());
+            }
+            Console.WriteLine();
+        }
+
         static void Main(string[] args)
         {
-            //This is first comment
-            //This is second comment and some deleted line
-
-
-            //Console.WriteLine("Asset tracking");
-            //List<AllAssets> allAssets = new List<AllAssets>();
-
-            ////List<Computers> computers = new List<Computers>();
-
-            //List<Computers> extraComputer = new List<Computers>
-            //{
-            //    new Computers("Computer", "HP", "Elitebook", "Spain", Convert.ToDateTime("2019-06-01"), 1423, "EUR", 1176.03),
-            //    new Computers("Computer", "HP", "Elitebook", "Sweden", Convert.ToDateTime("2020-10-02"), 588, "SEK", 4900),
-            //    new Computers("Computer", "Asus", "W234", "USA", Convert.ToDateTime("2017-04-21"), 1200, "USD", 1200),
-            //    new Computers("Computer", "Lenovo", "Yoga 730", "USA", Convert.ToDateTime("2018-05-28"), 835, "USD", 835),
-            //    new Computers("Computer", "Lenovo", "Yoga 730", "USA", Convert.ToDateTime("2019-05-21"), 1030, "USD", 1030),
-
-            //    new Computers("Phone", "iPhone", "8", "Spain", Convert.ToDateTime("2018-12-29"), 970, "EUR", 801.65),
-            //    new Computers("Phone", "iPhone", "11", "Spain", Convert.ToDateTime("2020-09-25"), 990, "EUR", 818.18),
-            //    new Computers("Phone", "iPhone", "X", "Sweden", Convert.ToDateTime("2018-07-15"), 1245, "SEK", 10375),
-            //    new Computers("Phone", "Motorola", "Razr", "Sweden", Convert.ToDateTime("2020-03-16"), 970, "SEK", 8083.33)
-            //};
-
-            ////extraComputer.AddRange(computers);
-            //Console.WriteLine("-----------------------------------------------------------------------------------------------------------");
-            //Console.WriteLine("Type".PadRight(15) + "Brand".PadRight(15) + "Model".PadRight(15) + "Office".PadRight(15) + "Purchase Date".PadRight(15) + "Price in USD".PadRight(15) + "Currency".PadRight(15) + "Local price today" );
-            //Console.WriteLine("-----------------------------------------------------------------------------------------------------------");
-            //foreach (Computers computer in extraComputer)
-            //{
-            //    Console.WriteLine(computer.Type.PadRight(15) + computer.Brand.PadRight(15) + computer.Model.PadRight(15) + computer.Office.PadRight(15) + computer.PurchaseDate.ToString("yyyy-MM-dd").PadRight(15) + computer.PriceInUSD.ToString().PadRight(15) + computer.Currency.PadRight(15) + computer.LocalPriceToday.ToString());
-            //}
-
-            Console.WriteLine("Asset tracking");
-            List<AllAssets> allAssets = new List<AllAssets>();
-
-            //List<Computers> computers = new List<Computers>();
-
             List<AllAssets> assets = new List<AllAssets>
             {
                 new AllAssets("Computer", "HP", "Elitebook", "Spain", Convert.ToDateTime("2019-06-01"), 1423, "EUR", 1176.03),
@@ -56,55 +36,127 @@ namespace Mini_Project_1_Asset_Tracking__Level_1
                 new AllAssets("Phone", "iPhone", "11", "Spain", Convert.ToDateTime("2020-09-25"), 990, "EUR", 818.18),
                 new AllAssets("Phone", "iPhone", "X", "Sweden", Convert.ToDateTime("2018-07-15"), 1245, "SEK", 10375),
                 new AllAssets("Phone", "Motorola", "Razr", "Sweden", Convert.ToDateTime("2020-03-16"), 970, "SEK", 8083.33),
-                new AllAssets("Computer", "Lenovo", "Yoga 730", "USA", Convert.ToDateTime("2019-05-21"), 1030, "USD", 1030)
+                new AllAssets("Computer", "Lenovo", "Yoga 730", "USA", Convert.ToDateTime("2019-05-21"), 1030, "USD", 1030),
+                new AllAssets("Computer", "Lenovo", "Yoga 730", "USA", Convert.ToDateTime("2019-10-08"), 1030, "USD", 1030),
+                new AllAssets("Computer", "Lenovo", "Yoga 730", "USA", Convert.ToDateTime("2019-07-08"), 1030, "USD", 1030)
 
             };
+            List<AllAssets> sortedAssets = new List<AllAssets>();
+            string potato = "";
+            string type = "", brand = "", model = "", office = "";
+            DateTime dateTime = new DateTime();
+            double price = 0;
 
-            Console.WriteLine("My Assets - Unsorted");//extraComputer.AddRange(computers);
-            Console.WriteLine("---------------------------------------------------------------------------------------------------------------------------");
-            Console.WriteLine("Type".PadRight(15) + "Brand".PadRight(15) + "Model".PadRight(15) + "Office".PadRight(15) + "Purchase Date".PadRight(15) + "Price in USD".PadRight(15) + "Currency".PadRight(15) + "Local price today");
-            Console.WriteLine("---------------------------------------------------------------------------------------------------------------------------");
-            foreach (AllAssets asset in assets)
+            while (true)
             {
-                Console.WriteLine(asset.Type.PadRight(15) + asset.Brand.PadRight(15) + asset.Model.PadRight(15) + asset.Office.PadRight(15) + asset.PurchaseDate.ToString("yyyy-MM-dd").PadRight(15) + asset.PriceInUSD.ToString().PadRight(15) + asset.Currency.PadRight(15) + asset.LocalPriceToday.ToString());
-            }
-            Console.WriteLine();
-            Console.WriteLine("My Assets - Sorted by Type");
-            Console.WriteLine("---------------------------------------------------------------------------------------------------------------------------");
-            Console.WriteLine("Type".PadRight(15) + "Brand".PadRight(15) + "Model".PadRight(15) + "Office".PadRight(15) + "Purchase Date".PadRight(15) + "Price in USD".PadRight(15) + "Currency".PadRight(15) + "Local price today");
-            Console.WriteLine("---------------------------------------------------------------------------------------------------------------------------");
-            List<AllAssets> sortedAssets = assets.OrderBy(asset => asset.Type).ToList();
+                Console.WriteLine("what is the type. Write 'exit' to exit: ");
+                type = Console.ReadLine();
+                if (type == "exit")
+                {
+                    break;
+                }
+                Console.WriteLine("what is the brand: ");
+                brand = Console.ReadLine();
+                Console.WriteLine("what is the model: ");
+                model = Console.ReadLine();
+                Console.WriteLine("what is the office: ");
+                office = Console.ReadLine();
+                Console.WriteLine("what is the datetime: ");
+                dateTime = Convert.ToDateTime(Console.ReadLine());
+                Console.WriteLine("what is the price: ");
+                price = Convert.ToDouble(Console.ReadLine());
 
+
+
+                assets.Add(new AllAssets(type, brand, model, office, dateTime, price, "", 0));
+            }
+            
+
+
+            Console.WriteLine("Asset tracking");
+
+            //List<Computers> computers = new List<Computers>();
+
+
+            Title("My Assets unsorted");
+            PrintAssets(assets);
+
+            sortedAssets = assets.OrderBy(asset => asset.Type).ToList();
+            Title("My Assets  - Sorted by Type");
+            PrintAssets(sortedAssets);
+
+            sortedAssets = assets.OrderBy(asset => asset.PurchaseDate).ToList();
+            Title("My Assets - Sorted by Puschased Date");
+            PrintAssets(sortedAssets);
+
+
+            Console.WriteLine();
+            Title("My Assets - Sorted by Puschased Date less than 3 months(Red) away from 3 years");
+
+            sortedAssets = assets.OrderBy(asset => asset.PurchaseDate).ToList();
             foreach (AllAssets asset in sortedAssets)
-            {
-                Console.WriteLine(asset.Type.PadRight(15) + asset.Brand.PadRight(15) + asset.Model.PadRight(15) + asset.Office.PadRight(15) + asset.PurchaseDate.ToString("yyyy-MM-dd").PadRight(15) + asset.PriceInUSD.ToString().PadRight(15) + asset.Currency.PadRight(15) + asset.LocalPriceToday.ToString());
-            }
-            Console.WriteLine();
-            Console.WriteLine("My Assets - Sorted by Puschased Date");
-            Console.WriteLine("---------------------------------------------------------------------------------------------------------------------------");
-            Console.WriteLine("Type".PadRight(15) + "Brand".PadRight(15) + "Model".PadRight(15) + "Office".PadRight(15) + "Purchase Date".PadRight(15) + "Price in USD".PadRight(15) + "Currency".PadRight(15) + "Local price today");
-            Console.WriteLine("---------------------------------------------------------------------------------------------------------------------------");
-            List<AllAssets> sortedAssets1 = assets.OrderBy(asset => asset.PurchaseDate).ToList();
-
-            //foreach (AllAssets asset in sortedAssets1)
-            //{
-                
-            //    Console.WriteLine(asset.Type.PadRight(15) + asset.Brand.PadRight(15) + asset.Model.PadRight(15) + asset.Office.PadRight(15) + asset.PurchaseDate.ToString("yyyy-MM-dd").PadRight(15) + asset.PriceInUSD.ToString().PadRight(15) + asset.Currency.PadRight(15) + asset.LocalPriceToday.ToString());
-            //}
-
-            foreach (AllAssets asset in sortedAssets1)
             {
                 bool test = asset.PurchaseDate > DateTime.Now.AddYears(-3).AddMonths(3);
                 if (test) Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine(asset.Type.PadRight(15) + asset.Brand.PadRight(15) + asset.Model.PadRight(15) + asset.Office.PadRight(15) + asset.PurchaseDate.ToString("yyyy-MM-dd").PadRight(15) + asset.PriceInUSD.ToString().PadRight(15) + asset.Currency.PadRight(15) + asset.LocalPriceToday.ToString());
                 Console.ResetColor();
             }
-            //bool test = b.Year > DateTime.Now.AddYears(-3).AddMonths(3);
-            //if (test) Console.ForegroundColor = ConsoleColor.Red;
-            //Console.WriteLine(b.Type.PadRight(10) + " |" + b.Brand.PadRight(10) + " |" + b.Model.PadRight(20) + " |" + b.Office.PadRight(10) + " |" + b.Year.ToString("yyyy-MM-dd").PadRight(15) + " |" + b.Price.ToString().PadRight(15) + " |" + b.Currency.PadRight(15) + " |" + b.LocalPrice.ToString("C"));
-            //Console.ResetColor();
+            Console.WriteLine();
 
-     
+
+            sortedAssets = assets.OrderBy(asset => asset.PurchaseDate).ToList();
+            Title("My Assets - Sorted by Puschased Date less than 3 months(Red) 6 months(Yellow) away from 3 years");
+            foreach (AllAssets asset in sortedAssets)
+            {
+                bool test = asset.PurchaseDate > DateTime.Now.AddYears(-3).AddMonths(3);
+                if (test) Console.ForegroundColor = ConsoleColor.Red;
+                bool test1 = asset.PurchaseDate > DateTime.Now.AddYears(-3).AddMonths(6);
+                if (test1) Console.ForegroundColor = ConsoleColor.Yellow;
+
+                Console.WriteLine(asset.Type.PadRight(15) + asset.Brand.PadRight(15) + asset.Model.PadRight(15) + asset.Office.PadRight(15) + asset.PurchaseDate.ToString("yyyy-MM-dd").PadRight(15) + asset.PriceInUSD.ToString().PadRight(15) + asset.Currency.PadRight(15) + asset.LocalPriceToday.ToString());
+                Console.ResetColor();
+            }
+
+            Console.WriteLine();
+            Title("My Assets - Sorted by Office Puschased Date less than 3 months(Red) 6 months(Yellow) away from 3 years");
+            List<AllAssets> sortedAssets2 = assets.OrderBy(asset => asset.Office).ThenBy(asset => asset.PurchaseDate).ToList();
+            foreach (AllAssets asset in sortedAssets2)
+            {
+                // sortedAssets2 = assets.OrderBy(asset => asset.PurchaseDate).ToList();
+
+
+                bool test = asset.PurchaseDate < DateTime.Now.AddYears(-3).AddMonths(3);
+                bool test1 = asset.PurchaseDate < DateTime.Now.AddYears(-3).AddMonths(6);
+                //bool test2 = asset.PurchaseDate < DateTime.Now.AddYears(-3);
+
+                //if (test2) Console.ForegroundColor = ConsoleColor.Magenta;
+                if (test) Console.ForegroundColor = ConsoleColor.Red;
+                else if (test1) Console.ForegroundColor = ConsoleColor.Yellow;
+
+                if (asset.Office.ToLower() == "sweden")
+                {
+                    asset.LocalPriceToday = asset.PriceInUSD * 10d;
+                    asset.Currency = "SEK";
+                }
+                else if (asset.Office.ToLower() == "spain")
+                {
+                    asset.LocalPriceToday = asset.PriceInUSD * 0.95;
+                    asset.Currency = "EUR";
+                }
+                else if (asset.Office.ToLower() == "usa")
+                { 
+                    asset.LocalPriceToday = asset.PriceInUSD;
+                    asset.Currency = "USD";
+
+                }
+
+
+                Console.WriteLine(asset.Type.PadRight(15) + asset.Brand.PadRight(15) + asset.Model.PadRight(15) + asset.Office.PadRight(15) + asset.PurchaseDate.ToString("yyyy-MM-dd").PadRight(15) + asset.PriceInUSD.ToString().PadRight(15) + asset.Currency.PadRight(15) + asset.LocalPriceToday.ToString());
+                Console.ResetColor();
+            }
+
+
+
 
 
 
@@ -135,7 +187,7 @@ namespace Mini_Project_1_Asset_Tracking__Level_1
 
 
             Console.ReadLine();
-            
+
         }
     }
 }
