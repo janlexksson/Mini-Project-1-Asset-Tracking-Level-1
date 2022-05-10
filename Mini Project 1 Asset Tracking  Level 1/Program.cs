@@ -6,7 +6,7 @@ namespace Mini_Project_1_Asset_Tracking__Level_1
 {
     internal class Program
     {
-        static void Title(string input)
+        static void Title(string input)//Method writing Title input with  titlerow
         {
             Console.WriteLine(input);
             Console.WriteLine("---------------------------------------------------------------------------------------------------------------------------");
@@ -14,7 +14,7 @@ namespace Mini_Project_1_Asset_Tracking__Level_1
             Console.WriteLine("---------------------------------------------------------------------------------------------------------------------------");
         }
 
-        static void PrintAssets(List<AllAssets> list)
+        static void PrintAssets(List<AllAssets> list)//Method printing output from list
         {
             foreach (AllAssets asset in list)
             {
@@ -25,7 +25,7 @@ namespace Mini_Project_1_Asset_Tracking__Level_1
 
         static void Main(string[] args)
         {
-            List<AllAssets> assets = new List<AllAssets>
+            List<AllAssets> assets = new List<AllAssets>//Hardcoded assets in List
             {
                 new AllAssets("Computer", "HP", "Elitebook", "Spain", Convert.ToDateTime("2019-06-01"), 1423, "EUR", 1176.03),
                 new AllAssets("Computer", "HP", "Elitebook", "Sweden", Convert.ToDateTime("2020-10-02"), 588, "SEK", 4900),
@@ -42,33 +42,47 @@ namespace Mini_Project_1_Asset_Tracking__Level_1
 
             };
             List<AllAssets> sortedAssets = new List<AllAssets>();
-            string potato = "";
             string type = "", brand = "", model = "", office = "";
             DateTime dateTime = new DateTime();
             double price = 0;
 
             while (true)
             {
-                Console.WriteLine("what is the type. Write 'exit' to exit: ");
-                type = Console.ReadLine();
-                if (type == "exit")
+                
+                    Console.WriteLine("Write the type (Phone or Computer). Write 'exit' to exit!");
+                    type = Console.ReadLine();
+                    if (type.ToLower().Trim() == "exit")
+                    {
+                        break;
+                    }
+                    Console.WriteLine("What is the brand?");
+                    brand = Console.ReadLine();
+
+                    Console.WriteLine("What is the model?");
+                    model = Console.ReadLine();
+
+                    Console.WriteLine("What is the office: Sweden, Spain or USA?");
+                    office = Console.ReadLine();
+
+                    Console.WriteLine("What is the datetime?");
+                    dateTime = Convert.ToDateTime(Console.ReadLine());
+                
+                try
                 {
+                    Console.WriteLine("What is the price: i USD?");
+                    price = Convert.ToDouble(Console.ReadLine());
+                }
+                catch
+                {
+                    Console.WriteLine("Skriv nummer!");
                     break;
                 }
-                Console.WriteLine("what is the brand: ");
-                brand = Console.ReadLine();
-                Console.WriteLine("what is the model: ");
-                model = Console.ReadLine();
-                Console.WriteLine("what is the office: ");
-                office = Console.ReadLine();
-                Console.WriteLine("what is the datetime: ");
-                dateTime = Convert.ToDateTime(Console.ReadLine());
-                Console.WriteLine("what is the price: ");
-                price = Convert.ToDouble(Console.ReadLine());
+                
+                
 
 
 
-                assets.Add(new AllAssets(type, brand, model, office, dateTime, price, "", 0));
+                assets.Add(new AllAssets(type, brand, model, office, dateTime, price, "", 0));//Adding user input to list
             }
             
 
@@ -77,7 +91,7 @@ namespace Mini_Project_1_Asset_Tracking__Level_1
 
             //List<Computers> computers = new List<Computers>();
 
-
+            // Diffrent output from list with methods
             Title("My Assets unsorted");
             PrintAssets(assets);
 
