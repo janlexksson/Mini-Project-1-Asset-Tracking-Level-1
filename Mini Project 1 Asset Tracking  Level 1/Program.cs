@@ -6,6 +6,7 @@ namespace Mini_Project_1_Asset_Tracking__Level_1
 {
     internal class Program
     {
+        //added
         static void Title(string input)//Method writing Title input with  titlerow
         {
             Console.WriteLine(input);
